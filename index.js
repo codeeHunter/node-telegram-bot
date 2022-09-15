@@ -1,10 +1,8 @@
-require("dotenv").config("/.env");
-
 const { default: axios } = require("axios");
 axios.defaults.withCredentials = true;
 
 const TelegramApi = require("node-telegram-bot-api");
-const token_bot = process.env.TOKEN_API;
+const token_bot = "5650909348:AAFYcHI5VpwtMdSeYi4_PkjQiV_SxbHpY2E";
 const bot = new TelegramApi(token_bot, { polling: true });
 const archive =
   "https://drive.google.com/file/d/1Xs_YjOLgigsuKl17mOnR_488MdEKloCD/view";
@@ -15,7 +13,9 @@ class GismeteoApi {
   async getWeather() {
     try {
       const { data } = await axios
-        .get(process.env.REQUEST_URL)
+        .get(
+          "http://api.openweathermap.org/data/2.5/weather?q=Ottawa,ca&APPID=9d4e355a96a1ca9cc2f737a17be25f89"
+        )
         .then((response) => response)
         .catch((error) => error);
 
